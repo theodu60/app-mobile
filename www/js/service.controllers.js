@@ -1,12 +1,12 @@
 angular.module('app')
-  .factory('Utils', function() {
+  .factory('outils', function($cordovaFile) {
     return {
       /*
       	Parametres: String
       	retour: JSON
       */
-      parsingHis: function(str) {
-        
+      parsing: function(str) {
+        return str
       }
   }
   })
