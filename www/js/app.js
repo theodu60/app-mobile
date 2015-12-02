@@ -30,11 +30,12 @@ angular.module('app', ['ionic', 'ngCordova'])
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
       })
-      .state('app.search', {
-        url: '/search',
+      .state('app.dashboard', {
+        url: '/dashboard',
         views: {
           'menuContent': {
-            templateUrl: 'templates/search.html'
+            templateUrl: 'templates/dashboard.html',
+            controller: 'DashboardCtrl'
           }
         }
       })
