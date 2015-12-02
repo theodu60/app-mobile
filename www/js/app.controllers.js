@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['$cordovaFile'])
+angular.module('app')
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
