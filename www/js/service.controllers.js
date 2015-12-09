@@ -44,7 +44,6 @@ angular.module('app')
             fn(scope, {$fileContent:onLoadEvent.target.result});
           });
         };
-
         reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
       });
     }

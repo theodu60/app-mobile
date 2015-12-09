@@ -36,6 +36,9 @@
     "installed_plugins": {
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.app527122"
+        },
+        "com.maginsoft.mfilechooser": {
+            "PACKAGE_NAME": "com.ionicframework.app527122"
         }
     },
     "dependent_plugins": {}

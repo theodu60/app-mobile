@@ -145,12 +145,20 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/com.maginsoft.mfilechooser/www/mfilechooser.js",
+        "id": "com.maginsoft.mfilechooser.MFileChooser",
+        "clobbers": [
+            "MFileChooser"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-file": "3.0.0"
+    "cordova-plugin-file": "3.0.0",
+    "com.maginsoft.mfilechooser": "1.0.0"
 }
 // BOTTOM OF METADATA
 });
