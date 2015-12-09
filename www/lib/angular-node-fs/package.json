@@ -1,0 +1,41 @@
+{
+  "name": "angular-node-fs",
+  "version": "0.0.1",
+  "description": "use nodes rfs module as angular service",
+  "main": "dist/node-fs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "node",
+    "fs"
+  ],
+  "author": {
+    "name": "Kyle Roux",
+    "email": "kyle@level2designs.com",
+    "url": "https://github.com/jstacoder"
+  },
+  "license": "BSD2",
+  "gitHead": "0cc703e1c52f0cf0cd2dfb154af5e26d99482d17",
+  "_id": "angular-node-fs@0.0.1",
+  "_shasum": "b57708ae3abe754a16216952b09fa6e487093cd9",
+  "_from": "angular-node-fs@*",
+  "_npmVersion": "1.4.21",
+  "_npmUser": {
+    "name": "jstacoder",
+    "email": "kyle@level2designs.com"
+  },
+  "maintainers": [
+    {
+      "name": "jstacoder",
+      "email": "kyle@level2designs.com"
+    }
+  ],
+  "dist": {
+    "shasum": "b57708ae3abe754a16216952b09fa6e487093cd9",
+    "tarball": "http://registry.npmjs.org/angular-node-fs/-/angular-node-fs-0.0.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/angular-node-fs/-/angular-node-fs-0.0.1.tgz"
+}
