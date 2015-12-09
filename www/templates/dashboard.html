@@ -1,8 +1,11 @@
 <ion-view view-title="Dashboard">
   <ion-content>
     <h1>Dashboard</h1>
-    <p>Hello {{name}}!</p>
-    <input type="file" file-reader="fileContent" />
-    <div>{{fileContent}}</div>
+  <h1>Select text file</h1>
+    <input type="file" on-read-file="showContent($fileContent)" />
+    <div ng-if="content">
+        <h2>File content is:</h2>
+        <pre>{{ content }}</pre>
+    </div>
   </ion-content>
 </ion-view>

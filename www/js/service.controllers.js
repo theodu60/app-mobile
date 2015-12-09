@@ -29,33 +29,24 @@ angular.module('app')
         return obj
       }
   }
-  }).directive('fileReader', function(outils) {
+  }).directive('onReadFile', function ($parse) {
   return {
-    scope: {
-      fileReader:"="
-    },
-    link: function(scope, element) {
-      $(element).on('change', function(changeEvent) {
-        var files = changeEvent.target.files;
-        if (files.length) {
-          var r = new FileReader();
-          r.onload = function(e) {
-              var contents = e.target.result;
-              scope.$apply(function () {
-                scope.fileReader = contents;
-                console.log(outils.parsing(contents))
-              });
-          };
-          
-          r.readAsText(files[0]);
+    restrict: 'A',
+    scope: false,
+    link: function(scope, element, attrs) {
+            var fn = $parse(attrs.onReadFile);
+            
+      element.on('change', function(onChangeEvent) {
+        var reader = new FileReader();
+                
+        reader.onload = function(onLoadEvent) {
+          scope.$apply(function() {
+            fn(scope, {$fileContent:onLoadEvent.target.result});
+          });
+        };
 
-
-        }
+        reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
       });
     }
   };
 });
-
-
-
-
