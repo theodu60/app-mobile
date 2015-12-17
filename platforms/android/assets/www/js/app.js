@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic','ngCordova','ngFileUpload'])
+angular.module('app', ['ionic','ngCordova','ngStorage','highcharts-ng'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -31,7 +31,7 @@ angular.module('app', ['ionic','ngCordova','ngFileUpload'])
         controller: 'AppCtrl'
       })
       .state('app.dashboard', {
-        url: '/dashboard',
+        url: '/dashboard/:name',
         views: {
           'menuContent': {
             templateUrl: 'templates/dashboard.html',
@@ -44,16 +44,17 @@ angular.module('app', ['ionic','ngCordova','ngFileUpload'])
           url: '/browse',
           views: {
             'menuContent': {
-              templateUrl: 'templates/browse.html'
+              templateUrl: 'templates/browse.html',
+              controller: 'BrowseCtrl'
             }
           }
         })
-        .state('app.playlists', {
-          url: '/playlists',
+        .state('app.lists', {
+          url: '/lists',
           views: {
             'menuContent': {
-              templateUrl: 'templates/playlists.html',
-              controller: 'PlaylistsCtrl'
+              templateUrl: 'templates/lists.html',
+              controller: 'ListsCtrl'
             }
           }
         })
@@ -76,5 +77,5 @@ angular.module('app', ['ionic','ngCordova','ngFileUpload'])
         }
       });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/browse');
 });
