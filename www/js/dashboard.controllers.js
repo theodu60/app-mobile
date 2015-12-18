@@ -45,6 +45,75 @@ angular.module('app')
     		$scope.lineCharts.push($scope.buildChartLine($scope.valueForRecap[4], $scope.getHoursRecap($scope.valueForRecap[4], $scope.tab), $scope.getOneRecap($scope.valueForRecap[4], $scope.tab)))
 			$scope.fullCharts.push($scope.buildFullLine($scope.valueForRecap[3], $scope.tab))
 			$scope.fullCharts.push($scope.buildFullLine($scope.valueForRecap[4], $scope.tab))
+			$scope.rose = $scope.getRose($scope.tab)
+
+
+    // Parse the data from an inline table using the Highcharts Data plugin
+    $('#container').highcharts({
+        data: {
+            table: 'freq',
+            startRow: 1,
+            endRow: 17,
+            endColumn: 7
+        },
+
+        chart: {
+            polar: true,
+            type: 'column'
+        },
+
+        title: {
+            text: 'Wind rose for South Shore Met Station, Oregon'
+        },
+
+        subtitle: {
+            text: 'Source: or.water.usgs.gov'
+        },
+
+        pane: {
+            size: '85%'
+        },
+
+        legend: {
+            align: 'right',
+            verticalAlign: 'top',
+            y: 100,
+            layout: 'vertical'
+        },
+
+        xAxis: {
+            tickmarkPlacement: 'on'
+        },
+
+        yAxis: {
+            min: 0,
+            endOnTick: false,
+            showLastLabel: true,
+            title: {
+                text: 'Frequency (%)'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value + '%';
+                }
+            },
+            reversedStacks: false
+        },
+
+        tooltip: {
+            valueSuffix: '%'
+        },
+
+        plotOptions: {
+            series: {
+                stacking: 'normal',
+                shadow: false,
+                groupPadding: 0,
+                pointPlacement: 'on'
+            }
+        }
+    	});
+
 
 	  		$scope.hide()
 
@@ -58,8 +127,6 @@ angular.module('app')
 	});
 
 	$scope.buildFullLine = function (key, tab){
-
-
 		var chartConfig = {
 	        options: {
 	            chart: {
@@ -273,6 +340,56 @@ angular.module('app')
 			avg: avgFinal
 		}
 	}
+	function sortNumber(a,b) {
+	    return a - b;
+	}
+	$scope.meanThatTab = function (tab) {
+	    var sum = 0
+
+	    for (var i in tab){
+	    	sum += tab[i]
+	    }
+	    var res = Math.round(sum/tab.length * 10) / 10
+	    if (!res  || sum == 0 || !tab || tab.length == 0)
+	    	res = 0
+	    return (res)
+	}
+
+	$scope.getRose = function (tab){
+		var row = {}
+		for (var i in tab){
+			if (!row[tab[i]['LOCAL_WD_2MIN_MNM']]){
+				row[tab[i]['LOCAL_WD_2MIN_MNM']] = []
+			}
+			row[tab[i]['LOCAL_WD_2MIN_MNM']].push(tab[i]['LOCAL_WINDDIR_INSTANT'])
+		}
+
+		var data = {}
+
+		for (var i in row){
+				var res = ((Math.round(parseFloat($scope.meanThatTab(row[i])) * 10)) / 10 )
+				if (i != "undefined"){
+					if (isFinite(res))
+					{
+							data[i] = res
+					} else {
+							data[i] = 0
+					}					
+				}
+
+
+		}
+
+		var finalTab = []
+
+		for (var i in data){
+			finalTab.push({key: i  + "°", value: Math.round(parseInt(data[i]))})
+		}
+
+		return (finalTab)
+	}
+
+
 })
 
 

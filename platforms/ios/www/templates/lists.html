@@ -1,0 +1,10 @@
+<ion-view view-title="Lists">
+    <h1>Lists</h1>
+	<ion-content>
+	  <ion-item collection-repeat="item in lists">
+	    	{{item}}
+	    	<button ng-click='read(item)'>READ</button>
+	    	<button ng-click='del(item)'>DEL</button>
+	  </ion-item>
+	</ion-content>
+</ion-view>

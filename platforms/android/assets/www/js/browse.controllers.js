@@ -27,10 +27,6 @@ $scope.filepathChooser = function() {
 		alert(error);
 	});
  };
-
-
-
-
 })
 
 
